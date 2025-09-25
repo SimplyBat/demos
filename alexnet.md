@@ -89,3 +89,5 @@ AlexNet is like a **“microscope upgrade”** for computer vision:
 - It introduced concepts like ReLU, dropout, GPUs, and data augmentation.  
 - It’s crucial to learn because it laid the foundation for today’s AI.  
 - In paleontology, AlexNet can **identify fossils, analyze trackways, reconstruct skeletons, and catalog data**—helping us learn more about dinosaurs.
+
+[Gamma Presentation](https://gamma.app/docs/PureEarth-AI-Fighting-the-Plastic-Bottle-Menace-sxc9ry7wj5os9sq)
