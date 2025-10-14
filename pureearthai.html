@@ -1,255 +1,261 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PureEarth AI — Smarter Recycling</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      background-color: #0b1a0b;
-      color: #e6f4e6;
-      overflow-x: hidden;
-    }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PureEarth AI — Smarter Recycling</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      background-color: #0b1a0b;
+      color: #e6f4e6;
+      overflow-x: hidden;
+    }
 
-    header {
-      text-align: center;
-      padding: 80px 20px;
-      background: linear-gradient(to bottom, #122a12, #0b1a0b);
-    }
+    header {
+      text-align: center;
+      padding: 80px 20px;
+      background: linear-gradient(to bottom, #122a12, #0b1a0b);
+    }
 
-    header h1 {
-      font-size: 2.7rem;
-      color: #8ef58a;
-      margin-bottom: 10px;
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 1s ease;
-    }
+    header h1 {
+      font-size: 2.7rem;
+      color: #8ef58a;
+      margin-bottom: 10px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1s ease;
+    }
 
-    header p {
-      font-size: 1.1rem;
-      max-width: 650px;
-      margin: 0 auto;
-      color: #b6deb6;
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 1s ease 0.3s;
-    }
+    header p {
+      font-size: 1.1rem;
+      max-width: 650px;
+      margin: 0 auto;
+      color: #b6deb6;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1s ease 0.3s;
+    }
 
-    section {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      width: 100%;
-      min-height: 80vh;
-      padding: 60px 6%;
-      transition: all 1s ease;
-      opacity: 0;
-      transform: translateY(50px);
-    }
+    section {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      width: 100%;
+      min-height: 80vh;
+      padding: 60px 6%;
+      transition: all 1s ease;
+      opacity: 0;
+      transform: translateY(50px);
+    }
 
-    section.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    section.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-    section:nth-child(even) {
-      flex-direction: row-reverse;
-      background-color: #112611;
-    }
+    section:nth-child(even) {
+      flex-direction: row-reverse;
+      background-color: #112611;
+    }
 
-    .text-box {
-      flex: 1;
-      padding: 20px;
-      max-width: 500px;
-    }
+    .text-box {
+      flex: 1;
+      padding: 20px;
+      max-width: 500px;
+    }
 
-    .text-box h2 {
-      font-size: 2rem;
-      color: #9ff99b;
-      margin-bottom: 15px;
-    }
+    .text-box h2 {
+      font-size: 2rem;
+      color: #9ff99b;
+      margin-bottom: 15px;
+    }
 
-    .text-box p {
-      font-size: 1rem;
-      line-height: 1.5;
-      color: #d0f2d0;
-    }
+    .text-box p {
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #d0f2d0;
+    }
 
-    .image-box {
-      flex: 1;
-      text-align: center;
-      padding: 20px;
-    }
+    .image-box {
+      flex: 1;
+      text-align: center;
+      padding: 20px;
+    }
 
-    .image-box img {
-      width: 55%;
-      border-radius: 20px;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
-      transition: transform 0.6s ease, opacity 1s ease;
-      opacity: 0;
-      transform: translateY(30px);
-    }
+    .image-box img {
+      width: 55%;
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+      transition: transform 0.6s ease, opacity 1s ease;
+      opacity: 0;
+      transform: translateY(30px);
+    }
 
-    .image-box.show img {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    /* The image animation depends on the parent image-box having the 'show' class */
+    .image-box.show img { 
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-    ul {
-      padding-left: 20px;
-    }
+    ul {
+      padding-left: 20px;
+    }
 
-    footer {
-      text-align: center;
-      padding: 40px 20px;
-      background: #081108;
-      color: #9ff99b;
-      font-size: 0.9rem;
-    }
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      background: #081108;
+      color: #9ff99b;
+      font-size: 0.9rem;
+    }
 
-    /* Responsive tweaks for mobile */
-    @media (max-width: 900px) {
-      section {
-        flex-direction: column;
-        text-align: center;
-        padding: 40px 8%;
-      }
+    /* Responsive tweaks for mobile */
+    @media (max-width: 900px) {
+      section {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 8%;
+      }
 
-      section:nth-child(even) {
-        flex-direction: column;
-      }
+      section:nth-child(even) {
+        flex-direction: column;
+      }
 
-      .text-box, .image-box {
-        max-width: 100%;
-      }
+      .text-box, .image-box {
+        max-width: 100%;
+      }
 
-      .text-box h2 {
-        font-size: 1.8rem;
-      }
+      .text-box h2 {
+        font-size: 1.8rem;
+      }
 
-      .text-box p {
-        font-size: 0.95rem;
-      }
+      .text-box p {
+        font-size: 0.95rem;
+      }
 
-      .image-box img {
-        width: 75%;
-      }
-    }
-  </style>
+      .image-box img {
+        width: 75%;
+      }
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>PureEarth AI</h1>
-    <p>Revolutionizing Recycling with AI Sorting & Smart Reverse Vending Systems</p>
-  </header>
+  <header>
+    <h1>PureEarth AI</h1>
+    <p>Revolutionizing Recycling with AI Sorting & Smart Reverse Vending Systems</p>
+  </header>
 
-  <section id="problem-section">
-    <div class="text-box">
-      <h2>The Problem</h2>
-      <p>
-        Every year, over <strong>80 billion plastic bottles</strong> end up in landfills and oceans.
-        Manual sorting facilities struggle with contamination, inefficiency, and missed recycling opportunities.
-        Cities spend millions managing waste streams that could be valuable if properly separated.
-      </p>
-    </div>
-    <div class="image-box">
-      <img src="https://pureearth-ai-y5skk0a.gamma.site/path-to-your-problem-image" alt="Plastic waste problem" />
-    </div>
-  </section>
+  <section id="problem-section">
+    <div class="text-box">
+      <h2>The Problem</h2>
+      <p>
+        Every year, over <strong>80 billion plastic bottles</strong> end up in landfills and oceans.
+        Manual sorting facilities struggle with contamination, inefficiency, and missed recycling opportunities.
+        Cities spend millions managing waste streams that could be valuable if properly separated.
+      </p>
+    </div>
+    <div class="image-box">
+      <img src="https://pureearth-ai-y5skk0a.gamma.site/path-to-your-problem-image" alt="Plastic waste problem" />
+    </div>
+  </section>
 
-  <section id="sorting-section">
-    <div class="text-box">
-      <h2>AI Sorting Facilities</h2>
-      <p>
-        Using <strong>AlexNet-based computer vision</strong>, our AI identifies and sorts recyclable materials —
-        plastics, metals, glass, and paper — with precision and speed.
-        Automated conveyors scan and categorize items, increasing material purity and resale value by up to 35%.
-      </p>
-    </div>
-    <div class="image-box">
-      <img src="https://pureearth-ai-y5skk0a.gamma.site/path-to-your-sorting-image" alt="AI sorting facility" />
-    </div>
-  </section>
+  <section id="sorting-section">
+    <div class="text-box">
+      <h2>AI Sorting Facilities</h2>
+      <p>
+        Using <strong>AlexNet-based computer vision</strong>, our AI identifies and sorts recyclable materials —
+        plastics, metals, glass, and paper — with precision and speed.
+        Automated conveyors scan and categorize items, increasing material purity and resale value by up to 35%.
+      </p>
+      </div>
+    <div class="image-box">
+      <img src="https://pureearth-ai-y5skk0a.gamma.site/path-to-your-sorting-image" alt="AI sorting facility" />
+    </div>
+  </section>
 
-  <section id="rvm-section">
-    <div class="text-box">
-      <h2>Reverse Vending Machines (RVMs)</h2>
-      <p>
-        Consumers deposit bottles and cans and receive instant cash or rewards.
-        The AI-powered RVMs recognize material type and route it into the proper bin.
-        Stores and city centers install them because they <strong>draw foot traffic</strong> and improve recycling rates.
-      </p>
-    </div>
-    <div class="image-box">
-      <img src="https://pureearth-ai-y5skk0a.gamma.site/path-to-your-rvm-image" alt="RVM machine" />
-    </div>
-  </section>
+  <section id="rvm-section">
+    <div class="text-box">
+      <h2>Reverse Vending Machines (RVMs)</h2>
+      <p>
+        Consumers deposit bottles and cans and receive instant cash or rewards.
+        The AI-powered RVMs recognize material type and route it into the proper bin.
+        Stores and city centers install them because they <strong>draw foot traffic</strong> and improve recycling rates.
+      </p>
+    </div>
+    <div class="image-box">
+      <img src="https://pureearth-ai-y5skk0a.gamma.site/path-to-your-rvm-image" alt="RVM machine" />
+    </div>
+  </section>
 
-  <section id="roi-section">
-    <div class="text-box">
-      <h2>ROI for Investors</h2>
-      <p>
-        PureEarth AI’s integrated recycling ecosystem pays back within <strong>12–18 months</strong> through:
-      </p>
-      <ul>
-        <li>Material resale (metals, plastics, glass)</li>
-        <li>Partnerships with cities and retailers</li>
-        <li>Revenue from consumer participation</li>
-      </ul>
-      <p>
-        Expected <strong>ROI: 2.5×</strong> with strong scalability potential as environmental policies tighten.
-      </p>
-    </div>
-    <div class="image-box">
-      <img src="https://pureearth-ai-y5skk0a.gamma.site/path-to-your-roi-image" alt="Recycling ROI" />
-    </div>
-  </section>
+  <section id="roi-section">
+    <div class="text-box">
+      <h2>ROI for Investors</h2>
+      <p>
+        PureEarth AI’s integrated recycling ecosystem pays back within <strong>12–18 months</strong> through:
+      </p>
+      <ul>
+        <li>Material resale (metals, plastics, glass)</li>
+        <li>Partnerships with cities and retailers</li>
+        <li>Revenue from consumer participation</li>
+      </ul>
+      <p>
+        Expected <strong>ROI: 2.5×</strong> with strong scalability potential as environmental policies tighten.
+      </p>
+    </div>
+    <div class="image-box">
+      <img src="https://pureearth-ai-y5skk0a.gamma.site/path-to-your-roi-image" alt="Recycling ROI" />
+    </div>
+  </section>
 
-  <section id="ending-section">
-    <div class="text-box">
-      <h2>The Solution</h2>
-      <p>
-        PureEarth AI bridges sustainability and innovation.
-        With automated sorting, reward-driven RVMs, and data-driven efficiency,
-        we reduce global plastic waste and generate real value for investors, cities, and communities alike.
-      </p>
-    </div>
-    <div class="image-box">
-      <img src="https://pureearth-ai-y5skk0a.gamma.site/path-to-your-solution-image" alt="PureEarth AI solution" />
-    </div>
-  </section>
+  <section id="ending-section">
+    <div class="text-box">
+      <h2>The Solution</h2>
+      <p>
+        PureEarth AI bridges sustainability and innovation.
+        With automated sorting, reward-driven RVMs, and data-driven efficiency,
+        we reduce global plastic waste and generate real value for investors, cities, and communities alike.
+      </p>
+    </div>
+    <div class="image-box">
+      <img src="https://pureearth-ai-y5skk0a.gamma.site/path-to-your-solution-image" alt="PureEarth AI solution" />
+    </div>
+  </section>
 
-  <footer>
-    © 2025 PureEarth AI | Smarter Recycling with Vision and Automation
-  </footer>
+  <footer>
+    © 2025 PureEarth AI | Smarter Recycling with Vision and Automation
+  </footer>
 
-  <script>
-    const headerTitle = document.querySelector("header h1");
-    const headerText = document.querySelector("header p");
-    window.addEventListener("load", () => {
-      headerTitle.style.opacity = "1";
-      headerTitle.style.transform = "translateY(0)";
-      headerText.style.opacity = "1";
-      headerText.style.transform = "translateY(0)";
-    });
+  <script>
+    const headerTitle = document.querySelector("header h1");
+    const headerText = document.querySelector("header p");
+    window.addEventListener("load", () => {
+      headerTitle.style.opacity = "1";
+      headerTitle.style.transform = "translateY(0)";
+      headerText.style.opacity = "1";
+      headerText.style.transform = "translateY(0)";
+    });
 
-    const sections = document.querySelectorAll("section");
-    const images = document.querySelectorAll(".image-box img");
+    const sections = document.querySelectorAll("section");
+    // Correctly target the image boxes, not the images themselves
+    const imageBoxes = document.querySelectorAll(".image-box"); 
 
-    window.addEventListener("scroll", () => {
-      sections.forEach(sec => {
-        const rect = sec.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 150) sec.classList.add("show");
-      });
-      images.forEach(img => {
-        const rect = img.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 100) img.classList.add("show");
-      });
-    });
-  </script>
+    window.addEventListener("scroll", () => {
+      // Section fade-in/slide-up
+      sections.forEach(sec => {
+        const rect = sec.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 150) sec.classList.add("show");
+      });
+      
+      // Image fade-in/slide-up, now applied to the parent box
+      imageBoxes.forEach(box => {
+        const rect = box.getBoundingClientRect();
+        // Check if the image box is within the viewport
+        if (rect.top < window.innerHeight - 100) box.classList.add("show");
+      });
+    });
+  </script>
 </body>
 </html>
