@@ -1,261 +1,284 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PureEarth AI — Smarter Recycling</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      background-color: #0b1a0b;
-      color: #e6f4e6;
-      overflow-x: hidden;
-    }
-
-    header {
-      text-align: center;
-      padding: 80px 20px;
-      background: linear-gradient(to bottom, #122a12, #0b1a0b);
-    }
-
-    header h1 {
-      font-size: 2.7rem;
-      color: #8ef58a;
-      margin-bottom: 10px;
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 1s ease;
-    }
-
-    header p {
-      font-size: 1.1rem;
-      max-width: 650px;
-      margin: 0 auto;
-      color: #b6deb6;
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 1s ease 0.3s;
-    }
-
-    section {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      width: 100%;
-      min-height: 80vh;
-      padding: 60px 6%;
-      transition: all 1s ease;
-      opacity: 0;
-      transform: translateY(50px);
-    }
-
-    section.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    section:nth-child(even) {
-      flex-direction: row-reverse;
-      background-color: #112611;
-    }
-
-    .text-box {
-      flex: 1;
-      padding: 20px;
-      max-width: 500px;
-    }
-
-    .text-box h2 {
-      font-size: 2rem;
-      color: #9ff99b;
-      margin-bottom: 15px;
-    }
-
-    .text-box p {
-      font-size: 1rem;
-      line-height: 1.5;
-      color: #d0f2d0;
-    }
-
-    .image-box {
-      flex: 1;
-      text-align: center;
-      padding: 20px;
-    }
-
-    .image-box img {
-      width: 55%;
-      border-radius: 20px;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
-      transition: transform 0.6s ease, opacity 1s ease;
-      opacity: 0;
-      transform: translateY(30px);
-    }
-
-    /* The image animation depends on the parent image-box having the 'show' class */
-    .image-box.show img { 
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    ul {
-      padding-left: 20px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 40px 20px;
-      background: #081108;
-      color: #9ff99b;
-      font-size: 0.9rem;
-    }
-
-    /* Responsive tweaks for mobile */
-    @media (max-width: 900px) {
-      section {
-        flex-direction: column;
-        text-align: center;
-        padding: 40px 8%;
-      }
-
-      section:nth-child(even) {
-        flex-direction: column;
-      }
-
-      .text-box, .image-box {
-        max-width: 100%;
-      }
-
-      .text-box h2 {
-        font-size: 1.8rem;
-      }
-
-      .text-box p {
-        font-size: 0.95rem;
-      }
-
-      .image-box img {
-        width: 75%;
-      }
-    }
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PureEarth AI — Smart Recycling for a Smarter Planet</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --muted:#94a3b8;
+      --accent:#1aa251; /* green */
+      --accent-2:#14a348;
+      --glass: rgba(255,255,255,0.03);
+      --max-width:1100px;
+      --radius:12px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      background: linear-gradient(180deg,#071226 0%, #061421 100%);
+      color:#e6eef6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      padding:32px 20px;
+    }
+    .container{max-width:var(--max-width);margin:0 auto;}
+    header{
+      display:flex;gap:20px;align-items:center;justify-content:space-between;
+      margin-bottom:28px;
+    }
+    .brand{display:flex;gap:16px;align-items:center}
+    .logo{
+      width:66px;height:66px;border-radius:16px;
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      display:flex;align-items:center;justify-content:center;font-weight:800;color:white;font-size:26px;
+      box-shadow:0 6px 18px rgba(10,120,60,0.18);
+    }
+    h1{font-size:26px;margin:0}
+    .tagline{color:var(--muted); margin-top:6px;font-size:13px}
+    .hero{
+      display:grid;grid-template-columns:1fr 360px;gap:28px;margin-bottom:28px;
+    }
+    .card{
+      background:var(--card); padding:20px;border-radius:var(--radius);
+      box-shadow: 0 6px 30px rgba(2,12,23,0.5); border:1px solid rgba(255,255,255,0.02);
+    }
+    .lead {font-size:15px;color:#d7e6ff;margin-bottom:10px}
+    .small {color:var(--muted);font-size:13px}
+    .metrics{display:flex;gap:14px;margin-top:14px}
+    .metric{flex:1;background:var(--glass);padding:14px;border-radius:10px;text-align:center}
+    .metric h3{margin:0;font-size:20px;color:white}
+    .metric p{margin:6px 0 0;color:var(--muted);font-size:13px}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    section{margin-bottom:20px}
+    h2{margin:0 0 10px 0;font-size:18px}
+    p{margin:0 0 10px 0}
+    ul{margin:0 0 10px 18px}
+    .chips{display:flex;gap:10px;flex-wrap:wrap}
+    .chip{background:rgba(255,255,255,0.03);padding:8px 10px;border-radius:999px;font-size:13px;color:var(--muted)}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .stat{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:16px;border-radius:10px;text-align:center}
+    .stat h4{margin:0;font-size:20px}
+    .stat p{margin:8px 0 0;color:var(--muted);font-size:13px}
+    .revenue-table{width:100%;border-collapse:collapse;margin-top:8px}
+    .revenue-table th,.revenue-table td{padding:8px;border-bottom:1px dashed rgba(255,255,255,0.03);font-size:13px;text-align:left}
+    footer{margin-top:28px;color:var(--muted);font-size:13px;text-align:center}
+    .row{display:flex;gap:12px;align-items:flex-start}
+    .cta{background:linear-gradient(90deg,var(--accent),var(--accent-2));border:none;color:white;padding:10px 16px;border-radius:10px;font-weight:600;cursor:pointer}
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr}
+      .two-col{grid-template-columns:1fr}
+      .grid-3{grid-template-columns:repeat(1,1fr)}
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>PureEarth AI</h1>
-    <p>Revolutionizing Recycling with AI Sorting & Smart Reverse Vending Systems</p>
-  </header>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">PE</div>
+        <div>
+          <h1>PureEarth AI</h1>
+          <div class="tagline">Smart Recycling for a Smarter Planet — AI sorting + cash-reward RVMs</div>
+        </div>
+      </div>
+      <div style="text-align:right;">
+        <div class="small">Invest · Deploy · Scale</div>
+        <button class="cta" onclick="window.location='#contact'">Investor Deck</button>
+      </div>
+    </header>
 
-  <section id="problem-section">
-    <div class="text-box">
-      <h2>The Problem</h2>
-      <p>
-        Every year, over <strong>80 billion plastic bottles</strong> end up in landfills and oceans.
-        Manual sorting facilities struggle with contamination, inefficiency, and missed recycling opportunities.
-        Cities spend millions managing waste streams that could be valuable if properly separated.
-      </p>
-    </div>
-    <div class="image-box">
-      <img src="https://pureearth-ai-y5skk0a.gamma.site/path-to-your-problem-image" alt="Plastic waste problem" />
-    </div>
-  </section>
+    <div class="hero">
+      <div class="card">
+        <div class="lead">
+          PureEarth AI turns waste into value with an integrated system of **AlexNet-powered industrial sorting facilities** and **customer-facing Reverse Vending Machines (RVMs)** that pay cash instantly. We capture more material, reduce contamination, and create new revenue streams for cities and retailers.
+        </div>
 
-  <section id="sorting-section">
-    <div class="text-box">
-      <h2>AI Sorting Facilities</h2>
-      <p>
-        Using <strong>AlexNet-based computer vision</strong>, our AI identifies and sorts recyclable materials —
-        plastics, metals, glass, and paper — with precision and speed.
-        Automated conveyors scan and categorize items, increasing material purity and resale value by up to 35%.
-      </p>
-      </div>
-    <div class="image-box">
-      <img src="https://pureearth-ai-y5skk0a.gamma.site/path-to-your-sorting-image" alt="AI sorting facility" />
-    </div>
-  </section>
+        <div class="two-col">
+          <div>
+            <h2>The Problem</h2>
+            <p class="small">
+              Global waste overwhelms infrastructure. <strong>500+ billion plastic bottles</strong> are produced annually (≈1 million/minute). Only ~<strong>9% of plastic waste</strong> is recycled. Most materials sit in landfills for 450+ years and produce microplastics.
+            </p>
+          </div>
+          <div>
+            <h2>Our Impact</h2>
+            <ul>
+              <li>Divert millions of containers from oceans & landfills</li>
+              <li>Boost municipal recycling up to <strong>300%</strong></li>
+              <li>Reduce emissions by <strong>40–50%</strong> through optimized logistics</li>
+            </ul>
+          </div>
+        </div>
 
-  <section id="rvm-section">
-    <div class="text-box">
-      <h2>Reverse Vending Machines (RVMs)</h2>
-      <p>
-        Consumers deposit bottles and cans and receive instant cash or rewards.
-        The AI-powered RVMs recognize material type and route it into the proper bin.
-        Stores and city centers install them because they <strong>draw foot traffic</strong> and improve recycling rates.
-      </p>
-    </div>
-    <div class="image-box">
-      <img src="https://pureearth-ai-y5skk0a.gamma.site/path-to-your-rvm-image" alt="RVM machine" />
-    </div>
-  </section>
+        <div style="margin-top:12px" class="small">Core Offerings</div>
+        <div class="chips" style="margin-top:8px">
+          <div class="chip">AI Sorting Facilities (AlexNet)</div>
+          <div class="chip">Reverse Vending Machines (RVMs)</div>
+          <div class="chip">Robotic Separation</div>
+          <div class="chip">Real-time Analytics</div>
+          <div class="chip">Cash Rewards</div>
+        </div>
 
-  <section id="roi-section">
-    <div class="text-box">
-      <h2>ROI for Investors</h2>
-      <p>
-        PureEarth AI’s integrated recycling ecosystem pays back within <strong>12–18 months</strong> through:
-      </p>
-      <ul>
-        <li>Material resale (metals, plastics, glass)</li>
-        <li>Partnerships with cities and retailers</li>
-        <li>Revenue from consumer participation</li>
-      </ul>
-      <p>
-        Expected <strong>ROI: 2.5×</strong> with strong scalability potential as environmental policies tighten.
-      </p>
-    </div>
-    <div class="image-box">
-      <img src="https://pureearth-ai-y5skk0a.gamma.site/path-to-your-roi-image" alt="Recycling ROI" />
-    </div>
-  </section>
+        <div class="metrics" style="margin-top:16px">
+          <div class="metric">
+            <h3>500B+</h3>
+            <p>Plastic bottles / year</p>
+          </div>
+          <div class="metric">
+            <h3>2B+</h3>
+            <p>Metric tons of waste / year</p>
+          </div>
+          <div class="metric">
+            <h3>95%+</h3>
+            <p>Sorting accuracy (AlexNet)</p>
+          </div>
+        </div>
+      </div>
 
-  <section id="ending-section">
-    <div class="text-box">
-      <h2>The Solution</h2>
-      <p>
-        PureEarth AI bridges sustainability and innovation.
-        With automated sorting, reward-driven RVMs, and data-driven efficiency,
-        we reduce global plastic waste and generate real value for investors, cities, and communities alike.
-      </p>
-    </div>
-    <div class="image-box">
-      <img src="https://pureearth-ai-y5skk0a.gamma.site/path-to-your-solution-image" alt="PureEarth AI solution" />
-    </div>
-  </section>
+      <div>
+        <div class="card" style="margin-bottom:18px">
+          <h2 style="margin-bottom:8px">How It Works</h2>
+          <div class="small">
+            <strong>1.</strong> <em>RVMs</em> placed at stores, campuses, transit hubs accept bottles & cans; customers receive instant cash or digital payout. AI verifies material and reduces contamination at source.<br><br>
+            <strong>2.</strong> <em>Collection & Logistics:</em> RVMs feed collected loads to regional PureEarth AI hubs on optimized routes.<br><br>
+            <strong>3.</strong> <em>AI Sorting Facilities:</em> High-speed cameras + AlexNet models classify plastics (PET, HDPE, LDPE, PVC), metals (aluminum, steel, copper), glass (clear/green/amber), paper/cardboard, and e-waste; robotic actuators separate materials in real time.
+          </div>
+        </div>
 
-  <footer>
-    © 2025 PureEarth AI | Smarter Recycling with Vision and Automation
-  </footer>
+        <div class="card">
+          <h2>Why Cities & Retailers Pay</h2>
+          <ul class="small">
+            <li><strong>Foot traffic:</strong> RVMs bring customers who redeem cash and shop.</li>
+            <li><strong>ESG & Compliance:</strong> Helps meet recycling mandates and qualify for grants.</li>
+            <li><strong>New revenue:</strong> Recyclables become high-purity sellable resources.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
 
-  <script>
-    const headerTitle = document.querySelector("header h1");
-    const headerText = document.querySelector("header p");
-    window.addEventListener("load", () => {
-      headerTitle.style.opacity = "1";
-      headerTitle.style.transform = "translateY(0)";
-      headerText.style.opacity = "1";
-      headerText.style.transform = "translateY(0)";
-    });
+    <section class="card">
+      <h2>Materials & Buyers</h2>
+      <p class="small">PureEarth AI sorts all major recyclable streams and sells to specialized buyers and manufacturers:</p>
+      <table class="revenue-table" aria-label="Material prices">
+        <thead>
+          <tr><th>Material</th><th>Avg Price / Ton (est.)</th><th>Buyers</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Aluminum</td><td>$1,600</td><td>Beverage & can manufacturers</td></tr>
+          <tr><td>Copper</td><td>$8,000</td><td>Electronics/refineries</td></tr>
+          <tr><td>PET Plastic</td><td>$500</td><td>Packaging producers</td></tr>
+          <tr><td>HDPE</td><td>$800</td><td>Consumer goods manufacturers</td></tr>
+          <tr><td>Glass</td><td>$90</td><td>Glass product makers</td></tr>
+          <tr><td>Paper/Cardboard</td><td>$150–$250</td><td>Paper mills</td></tr>
+          <tr><td>E-waste metals</td><td>$3,000–$10,000</td><td>Smelters & refineries</td></tr>
+        </tbody>
+      </table>
+    </section>
 
-    const sections = document.querySelectorAll("section");
-    // Correctly target the image boxes, not the images themselves
-    const imageBoxes = document.querySelectorAll(".image-box"); 
+    <section class="card">
+      <h2>Revenue Streams</h2>
+      <div class="two-col">
+        <div>
+          <ul class="small">
+            <li><strong>Material Resale</strong> — Sale of sorted materials to manufacturers & smelters.</li>
+            <li><strong>RVM Leasing</strong> — Monthly leasing & revenue share with retailers/cities.</li>
+            <li><strong>AI Licensing</strong> — Retrofit licensing for existing facilities.</li>
+          </ul>
+        </div>
+        <div>
+          <ul class="small">
+            <li><strong>Advertising</strong> — Digital screens on RVMs.</li>
+            <li><strong>Data & ESG Analytics</strong> — Sell location-based recycling insights to brands.</li>
+            <li><strong>Government Grants</strong> — Infrastructure and sustainability funding.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-    window.addEventListener("scroll", () => {
-      // Section fade-in/slide-up
-      sections.forEach(sec => {
-        const rect = sec.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 150) sec.classList.add("show");
-      });
-      
-      // Image fade-in/slide-up, now applied to the parent box
-      imageBoxes.forEach(box => {
-        const rect = box.getBoundingClientRect();
-        // Check if the image box is within the viewport
-        if (rect.top < window.innerHeight - 100) box.classList.add("show");
-      });
-    });
-  </script>
+    <section class="card">
+      <h2>ROI Snapshot</h2>
+      <div class="grid-3" style="margin-top:12px">
+        <div class="stat">
+          <h4>RVM Cost</h4>
+          <p>$18K–$25K / unit</p>
+        </div>
+        <div class="stat">
+          <h4>Facility Cost</h4>
+          <p>$2.5M–$3.5M / site</p>
+        </div>
+        <div class="stat">
+          <h4>Payback</h4>
+          <p>12–18 months</p>
+        </div>
+      </div>
+
+      <div class="grid-3" style="margin-top:12px">
+        <div class="stat">
+          <h4>Annual Facility Revenue</h4>
+          <p>$5M–$7M</p>
+        </div>
+        <div class="stat">
+          <h4>RVM Annual Yield</h4>
+          <p>$35K–$60K</p>
+        </div>
+        <div class="stat">
+          <h4>ROI Potential</h4>
+          <p>2.5× within 24 months</p>
+        </div>
+      </div>
+
+      <p class="small" style="margin-top:12px">
+        Example: a city with 200 RVMs + 1 AI facility can generate $12M+ annual material revenue and cut landfill disposal by tens of thousands of tons.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Competitive Advantages</h2>
+      <ul class="small">
+        <li><strong>Integrated Loop:</strong> RVMs supply high-purity input to AI sorting hubs.</li>
+        <li><strong>AlexNet Vision:</strong> Proprietary computer vision tuned for crushed/dirty/partial view items (95%+ accuracy).</li>
+        <li><strong>Scalable & Retrofit-able:</strong> Add to existing plants with minimal downtime.</li>
+        <li><strong>Actionable Data:</strong> Real-time dashboards for municipalities and brands.</li>
+      </ul>
+    </section>
+
+    <section class="card" id="contact">
+      <h2>Investor Summary & Use of Funds</h2>
+      <div class="two-col" style="align-items:flex-start">
+        <div>
+          <p class="small"><strong>Funding Goal:</strong> $10M seed round to deploy 3 pilot facilities and 500 RVMs.</p>
+          <ul class="small">
+            <li>40% — AI R&D & ML model optimization</li>
+            <li>35% — Facility setup & robotics</li>
+            <li>15% — RVM manufacturing & deployment</li>
+            <li>10% — Partnerships, sales, & scaling</li>
+          </ul>
+        </div>
+        <div>
+          <p class="small"><strong>Exit Strategy:</strong> Acquisition by major waste management, infrastructure, or ESG-focused firms. Multiple revenue & licensing exit opportunities.</p>
+          <p class="small"><strong>Impact Goal:</strong> 10–50 facilities and 50k+ RVMs nationwide within 5 years; measurable tons diverted & carbon reduced.</p>
+          <div style="margin-top:8px">
+            <button class="cta" onclick="alert('Contact: founders@pureearth.ai')">Contact Investors</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div style="margin-bottom:8px">PureEarth AI — Turning pollution into profit, one container at a time.</div>
+      <div class="small">© <span id="year"></span> PureEarth AI • Powered by AlexNet computer vision • Website: pureearth-ai</div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
